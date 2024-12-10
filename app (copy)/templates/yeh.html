@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styling.css') }}">
+    <title>TaskIt - Dashboard</title>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">TaskIt</div>
+        <nav class="navigation-menu">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/tasks">Tasks</a>
+            <a href="/calendar">Calendar</a>
+            <a href="/settings">Settings</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </div>
+
+    <!-- Header -->
+    <div class="heading-grid">
+        <h1>Hello, {{ username }}</h1>
+        <p>Welcome 💠</p>
+    </div>
+
+    <!-- Date Section -->
+    <div class="date">
+        <h2 id="current-day"></h2>
+        <span id="current-date"></span>
+    </div>
+    <!-- Task Grids -->
+    <div class="grid">
+        <!-- Today Tasks -->
+        <div class="column" data-column="Today">
+            <h2>Today <span id="today-counter">({{ tasks_today|length }})</span></h2>
+            <button class="add-task-button" data-column="Today">+</button>
+            <div id="today-tasks">
+                {% for task in tasks_today %}
+                <div class="task-card" data-task-id="{{ task[0] }}">
+                    <div class="task-title">{{ task[1] }}</div>
+                    <div class="task-description">{{ task[2] }}</div>
+                    <button class="delete-task-button" data-task-id="{{ task[0] }}">Remove</button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Tomorrow Tasks -->
+        <div class="column" data-column="Tomorrow">
+            <h2>Tomorrow <span id="tomorrow-counter">({{ tasks_tomorrow|length }})</span></h2>
+            <button class="add-task-button" data-column="Tomorrow">+</button>
+            <div id="tomorrow-tasks">
+                {% for task in tasks_tomorrow %}
+                <div class="task-card" data-task-id="{{ task[0] }}">
+                    <div class="task-title">{{ task[1] }}</div>
+                    <div class="task-description">{{ task[2] }}</div>
+                    <button class="delete-task-button" data-task-id="{{ task[0] }}">Remove</button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Overdue Tasks -->
+        <div class="column" data-column="Over-due">
+            <h2>Over-due <span id="overdue-counter">({{ tasks_overdue|length }})</span></h2>
+            <button class="add-task-button" data-column="Over-due">+</button>
+            <div id="overdue-tasks">
+                {% for task in tasks_overdue %}
+                <div class="task-card" data-task-id="{{ task[0] }}">
+                    <div class="task-title">{{ task[1] }}</div>
+                    <div class="task-description">{{ task[2] }}</div>
+                    <button class="delete-task-button" data-task-id="{{ task[0] }}">Remove</button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+
+
+        
+
+    <!-- Task Modal -->
+    <div id="task-modal" class="modal" action="add_task">
+        <div class="modal-content">
+            <h2>Add a New Task</h2>
+            <form action="/add_task" method="POST">
+                <label for="task-title">Title:</label>
+                <input type="text" id="task-title" name="title" placeholder="Enter task title" required>
+                <label for="task-description">Description:</label>
+                <textarea id="task-description" name="description" placeholder="Enter task description"></textarea>
+                <input type="hidden" id="task-column" name="column" value="">
+                <div class="modal-buttons">
+                    <button type="submit" id="save-task">Save</button>
+                    <button type="button" id="cancel-task">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

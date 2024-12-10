@@ -1,0 +1,246 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+:root {
+  --primary-blue: #3b82f6;
+  --light-blue: #dbeafe;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --bg-gray: #f3f4f6;
+  --border-color: #e5e7eb;
+  --important-red: #dc2626;
+  --important-bg: #fee2e2;
+  --average-bg: #fef3c7;
+  --average-text: #d97706;
+}
+* {
+  font-family: "poppins";
+}
+body {
+  background-color: var(--bg-gray);
+}
+.sidebar {
+  height: 100%;
+  width: 280px;
+  position: fixed;
+  padding: 1.5rem;
+  background-color: white;
+  border-right: 0 solid;
+  border-radius: 0.5rem;
+  align-items: center;
+}
+.logo {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #3b82f6;
+}
+.navigation-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.75rem;
+}
+a {
+  display: block;
+  text-align: center;
+  width: 250px;
+  padding: 0.875rem 1rem;
+  border-radius: 0.5rem;
+  color: black;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+}
+a:hover {
+  background-color: gray;
+}
+.heading-grid {
+  margin-left: 380px;
+  font-size: 25px;
+  /* background-color: white; */
+  /* border-radius: 0.75rem; */
+  /* padding:2px; */
+  margin-bottom: 50px;
+  vertical-align: middle;
+}
+h1 {
+  font-size: 50px;
+  padding-bottom: 4px;
+  margin-bottom: 0%;
+}
+.date {
+  font-size: 18px;
+  margin-left: 380px;
+  margin-bottom: 50px;
+}
+h2 {
+  font-size: 25px;
+  padding: 0%;
+  margin: 0%;
+}
+.grid {
+  display: flex;
+  flex-direction: row;
+  margin-left: 380px;
+  /* background-color:white ; */
+  /* border-radius: 0.75rem; */
+}
+.column {
+  border-width: 4px;
+  border-color: black;
+  margin-right: 25px;
+  align-items: center;
+}
+.day {
+  background-color: lightblue;
+  height: 28px;
+  width: 300px;
+  border-radius: 0.5rem;
+  font-size: 20px;
+  align-content: center;
+  text-align: center;
+  padding: 5px;
+}
+.add-task-button {
+  background-color: var(--primary-blue);
+  width: 310px;
+  height: 38px;
+  border-radius: 0.5rem;
+  margin-top: 14px;
+  margin-bottom: 30px;
+  padding: 5px;
+  border: none;
+  font-size: 25px;
+  text-align: center;
+}
+.add-task-button:hover {
+  background-color: lightgrey;
+}
+.task-card {
+  background-color: rgba(217, 130, 130, 0.774);
+  width: 300px;
+  border-radius: 0.75rem;
+  padding: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  margin-bottom: 14px;
+}
+.task-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.task-description {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* Modal Styles */
+/* Improved Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* Slightly darker transparent background */
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 25px 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  margin: 10% auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  text-align: center;
+  font-family: "Arial", sans-serif;
+}
+
+.modal-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.modal-content label {
+  display: block;
+  text-align: left;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+.modal-content textarea {
+  resize: none;
+  height: 80px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 10px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#save-task {
+  background-color: #28a745;
+  color: white;
+}
+
+#save-task:hover {
+  background-color: #218838;
+}
+
+#cancel-task {
+  background-color: #dc3545;
+  color: white;
+}
+
+#cancel-task:hover {
+  background-color: #c82333;
+}
+
+.delete-task-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.2s;
+}
+
+.delete-task-button:hover {
+  background-color: #c82333;
+}
